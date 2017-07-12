@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.trs.om:om-crm:1.0.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/trs/om/om-crm/1.0.1-SNAPSHOT/om-crm-1.0.1-20170711.115205-134.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/trs/om/om-crm/1.0.1-SNAPSHOT/om-crm-1.0.1-20170711.115205-134-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/trs/om/om-crm/1.0.1-SNAPSHOT/om-crm-1.0.1-20170711.115205-134-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

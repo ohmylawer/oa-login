@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.trs.om:om-data:1.0.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/trs/om/om-data/1.0.1-SNAPSHOT/om-data-1.0.1-20170711.115209-106.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/trs/om/om-data/1.0.1-SNAPSHOT/om-data-1.0.1-20170711.115209-106-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/trs/om/om-data/1.0.1-SNAPSHOT/om-data-1.0.1-20170711.115209-106-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

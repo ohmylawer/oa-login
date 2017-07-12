@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.trs:ckm-client:lite:20120412">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/trs/ckm-client/20120412/ckm-client-20120412-lite.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/trs/ckm-client/20120412/ckm-client-20120412-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/trs/ckm-client/20120412/ckm-client-20120412-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

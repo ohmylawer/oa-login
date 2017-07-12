@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.trs:trsids-remote-api:3.5.Build3500">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/trs/trsids-remote-api/3.5.Build3500/trsids-remote-api-3.5.Build3500.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/trs/trsids-remote-api/3.5.Build3500/trsids-remote-api-3.5.Build3500-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/trs/trsids-remote-api/3.5.Build3500/trsids-remote-api-3.5.Build3500-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

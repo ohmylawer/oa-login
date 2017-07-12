@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.trs:ckm-soap:20160331">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/trs/ckm-soap/20160331/ckm-soap-20160331.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/trs/ckm-soap/20160331/ckm-soap-20160331-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/trs/ckm-soap/20160331/ckm-soap-20160331-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

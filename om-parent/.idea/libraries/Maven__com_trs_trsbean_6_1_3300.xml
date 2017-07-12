@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.trs:trsbean:6.1.3300">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/trs/trsbean/6.1.3300/trsbean-6.1.3300.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/trs/trsbean/6.1.3300/trsbean-6.1.3300-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/trs/trsbean/6.1.3300/trsbean-6.1.3300-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
