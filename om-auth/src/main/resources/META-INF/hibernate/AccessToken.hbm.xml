@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.trs.om.CustomAuthorization.bean.AccessToken" table="accesstoken">
+ <id name="id">
+   <generator class="native"/>
+  </id>
+  
+  <property column="tokenCode"  lazy="false"
+            length="60" name="tokenCode" not-null="true" type="string"/>
+
+  <property name="tokenState" type="int" lazy="false"/>
+
+  <property name="createTime" type="timestamp" lazy="false"/>
+  <property name="tokenInvalidTime" type="timestamp" lazy="false"/>
+
+  <many-to-one name="user" class="com.trs.om.bean.User"  not-null="true" column="userId" lazy="false"/>
+<!--项目信息 -->
+  <property column="projectId"  lazy="false"
+            length="20" name="projectId" not-null="true" type="long"/>
+
+
+  <set name="permissions" table="permission_accesstoken" lazy="false" inverse="false">
+   <key column="tokenId"/>
+   <many-to-many column="permissionId" class="com.trs.om.bean.Permission"/>
+  </set>
+
+
+
+ </class>
+
+</hibernate-mapping>

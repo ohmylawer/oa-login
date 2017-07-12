@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.trs.om.bean.UserKey">
+  <id name="id">
+   <generator class="native"/>
+  </id>
+  <property column="user_id" name="userId" not-null="true" type="long"/>
+  <property column="key_sn" length="8" name="keySn" not-null="true" type="string"/>
+  <property column="hmac_key" length="40" name="hmacKey" not-null="true" type="string"/>
+ </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class dynamic-insert="true" dynamic-update="true" name="com.trs.om.bean.Session"
+   table="`session`">
+  <cache usage="read-write"/>
+  <id column="id" name="id">
+   <generator class="native"/>
+  </id>
+  <property column="roleId" generated="never" lazy="false" name="roleId"
+   not-null="true" type="long"/>
+  <property column="userId" generated="never" lazy="false" name="userId"
+   not-null="true" type="long"/>
+   <property column="groupId" generated="never" lazy="false" name="groupId"
+    type="long"/>
+ </class>
+</hibernate-mapping>

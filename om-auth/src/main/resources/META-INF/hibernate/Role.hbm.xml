@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class dynamic-insert="true" dynamic-update="true" name="com.trs.om.bean.Role"
+  table="`role`">
+  <cache usage="read-write"/>
+  <id column="id" name="id">
+   <generator class="native"/>
+  </id>
+  <property column="`NAME`" generated="never" lazy="false" name="name"
+   not-null="true" type="string" unique="true"/>
+  <property column="`DESC`" generated="never" lazy="false" name="desc"
+    type="string"/>
+  <set lazy="false" name="userGroups" inverse="true"
+   order-by="group_id desc" sort="unsorted" table="group_role">
+   <key column="role_id"/>
+   <many-to-many class="com.trs.om.bean.UserGroup" column="group_id" unique="false"/>
+  </set>
+ </class>
+</hibernate-mapping>

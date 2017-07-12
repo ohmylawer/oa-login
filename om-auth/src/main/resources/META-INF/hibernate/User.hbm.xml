@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.trs.om.bean.User" table="user_table">
+  <cache include="all" usage="read-write"/>
+  <id column="user_id" name="id">
+   <generator class="native"/>
+  </id>
+  <property column="user_name" generated="never" lazy="false"
+   length="32" name="userName" not-null="true" type="string" unique="true"/>
+  <property column="user_nickname" generated="never" lazy="false"
+   length="32" name="nickName" type="string"/>
+  <property generated="never" lazy="false" name="userType"
+   not-null="true" type="integer">
+   <column default="1" name="user_type"/>
+  </property>
+  <property column="user_remark" generated="never" lazy="false"
+   length="255" name="userRemark" type="string"/>
+  <property column="user_creationdate" generated="never" lazy="false"
+   name="creationDate" not-null="true" type="timestamp"/>
+  <property column="user_password" generated="never" lazy="false"
+   length="32" name="userPassword" not-null="true" type="string"/>
+  <property column="digestpassword" generated="never" lazy="false"
+   length="32" name="digestPassword"  type="string"/>
+  <property column="user_creator" generated="never" lazy="false"
+   length="32" name="creator" not-null="true" type="string"/>
+  <property generated="never" lazy="false" length="255" name="email" type="string"/>
+  <property generated="never" lazy="false" length="255" name="mobile" type="string"/>
+  <set lazy="false" name="userGroups" order-by="group_id desc" sort="unsorted" table="user_group">
+     <cache include="all" usage="nonstrict-read-write"/>
+     <key column="user_id"/>
+     <many-to-many class="com.trs.om.bean.UserGroup" column="group_id" unique="false"/>
+  </set>
+  <property generated="never" lazy="false" name="disabled" type="boolean"/>
+  <property generated="never" lazy="false" name="dueTime" type="date"/>
+  <property generated="never" lazy="false" name="retryCount" type="integer"/>
+  <property length="30" name="clientIpRestraint" type="string"/>
+     <property generated="never" lazy="false" name="deleteTimes" type="integer">
+   	<column default="0" name="deleteTimes"/>
+   </property>
+   <property generated="never" lazy="false" name="deleteUserId" type="long"/>
+   <property generated="never" lazy="false" name="deleteTime" type="timestamp"/>
+   <property name="extraFields" type="text"/>
+ </class>
+</hibernate-mapping>

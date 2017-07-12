@@ -1,0 +1,16 @@
+classpath:/META-INF/hibernate/Permission.hbm.xml
+classpath:/META-INF/hibernate/Possession.hbm.xml
+classpath:/META-INF/hibernate/Privilege.hbm.xml
+classpath:/META-INF/hibernate/Role.hbm.xml
+classpath:/META-INF/hibernate/Session.hbm.xml
+classpath:/META-INF/hibernate/User.hbm.xml
+classpath:/META-INF/hibernate/UserGroup.hbm.xml
+classpath:/META-INF/hibernate/LoginUser.hbm.xml
+classpath:/META-INF/hibernate/UserLog.hbm.xml
+classpath:/META-INF/hibernate/GroupVisibility.hbm.xml
+classpath:/META-INF/hibernate/UserKey.hbm.xml
+classpath:/META-INF/hibernate/UserPreference.hbm.xml
+classpath:/META-INF/hibernate/GroupOrg.hbm.xml
+classpath:/META-INF/hibernate/AccessToken.hbm.xml
+classpath:/META-INF/hibernate/UserAuthorizationToken.hbm.xml
+

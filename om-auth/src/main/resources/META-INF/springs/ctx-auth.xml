@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+    
+	<bean id="daoService" class="com.trs.otm.authorization.DAOService">
+		<property name="permissionAccessor" ref="permissionAccessor"/>
+		<property name="privilegeAccessor" ref="privilegeAccessor"/>
+		<property name="roleAccessor" ref="roleAccessor"/>
+		<property name="sessionAccessor" ref="sessionAccessor"/>
+	</bean>
+    <!--
+		IDS权限认证
+	-->
+	<bean id="sessionManager" class="com.trs.om.rbac.impl.SessionManager">
+		<constructor-arg index="0" ref="daoService"/>
+	</bean>
+	<bean id="permissionManager" class="com.trs.om.rbac.impl.PermissionManager">
+		<constructor-arg index="0" ref="daoService"/>
+	</bean>
+	<bean id="privilegeManager" class="com.trs.om.rbac.impl.PrivilegeManager">
+		<constructor-arg index="0" ref="daoService"/>
+	</bean>
+	<bean id="roleManager" class="com.trs.om.rbac.impl.RoleManager">
+		<constructor-arg index="0" ref="daoService"/>
+	</bean>
+	<bean id="authorizationServer" class="com.trs.om.rbac.impl.AuthorizationServer">
+		<property name="permissionManager" ref="permissionManager"/>
+		<property name="privilegeManager" ref="privilegeManager"/>
+		<property name="roleManager" ref="roleManager"/>
+		<property name="sessionManager" ref="sessionManager"/>
+	</bean>
+	<!-- <bean id="authorizationService" class="com.trs.om.rbac.client.impl.LocalAuthorizationService"> -->
+	<bean id="authorizationService" class="com.trs.om.service.impl.AuthorizationServiceImpl">
+		<constructor-arg index="0" ref="authorizationServer"/>
+		<property name="userService" ref="userService"/>
+	</bean>
+	<bean id="roleService" class="com.trs.om.service.impl.RoleServiceImpl">
+		<property name="roleManager" ref="roleManager"/>
+		<property name="permissionManager" ref="permissionManager"/>
+		<property name="userLogService" ref="userLogService"/>
+		<property name="userGroupService" ref="userGroupService"/>
+		<property name="userService" ref="userService"/>
+		<property name="sessionManager" ref="sessionManager"/>
+		<property name="permissionService" ref="permissionService"/>
+	</bean>
+	<bean id="permissionService" class="com.trs.om.service.impl.PermissionServiceImpl">
+		<property name="permissionManager" ref="permissionManager"/>
+		<property name="sessionManager" ref="sessionManager"/>
+		<property name="privilegeManager" ref="privilegeManager"/>
+		<property name="roleService" ref="roleService"/>
+		<property name="userGroupService" ref="userGroupService"/>
+	</bean>
+	<bean id="userLogService" class="com.trs.om.service.impl.UserLogService">
+		<description>用户日志服务</description>
+		<property name="userLogDao" ref="userLogDao"/>
+	</bean>
+	
+	<bean id="userService" class="com.trs.om.service.impl.UserServiceImpl">
+		<description>用户服务</description>
+		<property name="userDao" ref="userDao"/>
+		<property name="loginUserDao" ref="loginUserDao"/>
+		<property name="sessionManager" ref="sessionManager"/>
+		<property name="roleManager" ref="roleManager"/>
+		<property name="userLogService" ref="userLogService"/>
+		<property name="roleService" ref="roleService"/>
+		<property name="userGroupService" ref="userGroupService"/>
+		<property name="permissionService" ref="permissionService"/>
+		<property name="resourceAclService" ref="resourceAclService"/>
+		<property name="userKeyDao" ref="userKeyDao"/>
+		<property name="digestRealmName" value="#{ T(com.trs.om.common.SystemUtil).getPropertiesValue('security.digestRealmName') }"/>
+	</bean>
+	<bean id="userGroupService" class="com.trs.om.service.impl.UserGroupServiceImpl">
+		<description>用户组服务</description>
+		<property name="roleManager" ref="roleManager"/>
+		<property name="userGroupDao" ref="userGroupDao"/>
+		<property name="userLogService" ref="userLogService"/>
+		<property name="userDao" ref="userDao"/>
+		<property name="groupVisibilityDao" ref="groupVisibilityDao"/>
+		<property name="roleService" ref="roleService"/>
+		<property name="resourceAclService" ref="resourceAclService"/>
+		<property name="sessionManager" ref="sessionManager"/>
+		<property name="permissionService" ref="permissionService"/>
+	</bean>
+	<bean id="dataPermissionService" class="com.trs.om.service.impl.DataPermissionServiceImpl">
+		<description>数据权限相关的维护管理接口</description>
+		<property name="dataPermissionDao" ref="dataPermissionDao"/>
+		<property name="privilegeManager" ref="privilegeManager"/>
+		<property name="userService" ref="userService"/>
+	</bean>
+	<bean id="permissionAccessor" class="com.trs.om.rbac.dao.hb3.PermissionAccessor">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="privilegeAccessor" class="com.trs.om.rbac.dao.hb3.PrivilegeAccessor">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="roleAccessor" class="com.trs.om.rbac.dao.hb3.RoleAccessor">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="sessionAccessor" class="com.trs.om.rbac.dao.hb3.SessionAccessor">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="userDao" class="com.trs.om.dao.impl.UserDaoImpl" parent="baseDao"></bean>
+	<bean id="userLogDao" class="com.trs.om.dao.impl.UserLogDaoImpl" parent="baseDao"></bean>
+	<bean id="userGroupDao" class="com.trs.om.dao.impl.UserGroupDaoImpl" parent="baseDao"></bean>
+	<bean id="dataPermissionDao" class="com.trs.om.dao.impl.DataPermissionDaoImpl" parent="baseDao"></bean>
+	
+	
+	<bean id="userPreferenceService" class="com.trs.om.service.impl.UserPreferenceServiceImpl">
+		<description>用户个人偏好服务</description>
+		<property name="userPreferenceDao" ref="userPreferenceDao"/>
+	</bean>
+	
+	<bean id="icpinfoService" class="com.trs.om.service.impl.ICPinfoServiceImpl">
+	    <description>ICP信息服务</description>
+		<property name="icpinfoDao" ref="icpinfoDao"/>
+		<property name="icpInfoGroupDao" ref="icpInfoGroupDao"/>
+		<property name="dbConfigManager" ref="dbConfigManager"/>
+	</bean>
+	<bean id="possessionService" class="com.trs.om.service.impl.PossessionServiceImpl">
+	    <description>属地信息服务</description>
+		<property name="userService" ref="userService"/>
+		<property name="userGroupService" ref="userGroupService"/>
+		<property name="possessionDao" ref="possessionDao"/>
+	</bean>
+	<bean id="icpinfoDao"  class="com.trs.om.dao.impl.ICPinfoDaoImpl" parent="baseDao" ></bean>
+	<bean id="icpInfoGroupDao"  class="com.trs.om.dao.impl.ICPinfoGroupDaoImpl" parent="baseDao" ></bean>
+	<bean id="possessionDao"  class="com.trs.om.dao.impl.PossessionDaoImpl" parent="baseDao" ></bean>
+	<bean id="userKeyDao" class="com.trs.om.dao.impl.UserKeyDaoImpl" parent="baseDao"></bean>
+	<bean id="loginUserDao" class="com.trs.om.dao.impl.LoginUserDaoImpl" parent="baseDao"></bean>
+	<bean id="userPreferenceDao" class="com.trs.om.dao.impl.UserPreferenceDaoImpl" parent="baseDao"></bean>
+	
+	<bean id="groupVisibilityDao" class="com.trs.om.dao.impl.GroupVisibilityDaoImpl" parent="baseDao"></bean>
+	
+	<!-- 用户同步 -->
+	<bean id="groupOrgDao" class="com.trs.om.api.ws.synuser.GroupOrgDaoImpl" parent="baseDao"></bean>
+	<bean id="groupOrgService" class="com.trs.om.api.ws.synuser.GroupOrgServiceImpl">
+		<property name="groupOrgDao" ref="groupOrgDao"></property>
+	</bean>
+	<bean id="userSynService" class="com.trs.om.api.ws.synuser.UserSynServiceImpl">
+		<property name="groupOrgService" ref="groupOrgService"></property>
+		<property name="userGroupService" ref="userGroupService"></property>
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+</beans>

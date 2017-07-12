@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.trs.om.bean.UserLog" table="user_log_table">
+  <id column="user_log_id" name="id">
+   <generator class="native"/>
+  </id>
+  <property column="user_name" length="32" name="userName"
+   not-null="true" type="string"/>
+  <property column="user_act"  name="userAct"
+   not-null="true" type="text"/>
+  <property column="log_date" name="logDate" not-null="true" type="timestamp"/>
+  <property length="80" name="ip" type="string"/>
+  <property length="128" name="ipLocation" type="string"/>
+ </class>
+</hibernate-mapping>

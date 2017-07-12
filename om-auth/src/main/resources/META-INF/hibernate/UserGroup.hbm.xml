@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.trs.om.bean.UserGroup" table="usergroup">
+        <cache include="all" usage="read-write"/>
+        <id column="id" name="id">
+            <generator class="native"/>
+        </id>
+        <property column="groupName" generated="never" lazy="false" length="32" name="groupName" not-null="true"
+                  type="string" unique="true"/>
+        <property column="innerTag" generated="never" lazy="false" length="64" name="innerTag" not-null="true"
+                  type="string" unique="true"/>
+        <property column="createDate" generated="never" lazy="false" name="createDate" type="timestamp"/>
+        <property generated="never" lazy="false" name="parentId" type="long"/>
+        <property generated="never" lazy="false" name="position" type="integer"/>
+        <property generated="never" lazy="false" name="level" type="integer"/>
+        <property name="disabled" type="boolean"></property>
+        <set name="roles" inverse="false" table="group_role" lazy="false" order-by="role_id desc">
+            <key column="group_id"/>
+            <many-to-many class="com.trs.om.bean.Role" column="role_id"/>
+        </set>
+        <set name="users" inverse="false" table="user_group" lazy="false" order-by="user_id desc">
+            <key column="group_id"/>
+            <many-to-many class="com.trs.om.bean.User" column="user_id"/>
+        </set>
+        <set name="possessions" inverse="true"  lazy="false">
+            <key column="groupId"/>
+            <one-to-many class="com.trs.om.bean.Possession"/>
+        </set>
+    </class>
+
+</hibernate-mapping>

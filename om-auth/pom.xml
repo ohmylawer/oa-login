@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.trs.om</groupId>
+		<artifactId>om-parent</artifactId>
+		<version>1.0.1-SNAPSHOT</version>
+		<relativePath>../om-parent/pom.xml</relativePath>
+	</parent>
+	<artifactId>om-auth</artifactId>
+	<packaging>jar</packaging>
+	<name>TRS OM auth module</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<spring.version>3.0.3.RELEASE</spring.version>
+		<spring.security.version>3.0.3.RELEASE</spring.security.version>
+		<spring-security-oauth2.version>2.0.11.RELEASE</spring-security-oauth2.version>
+		<struts.version>2.3.24</struts.version>
+		<hibernate.version>3.3.2.GA</hibernate.version>
+		<cxf.version>2.7.4</cxf.version>
+		<restlet.version>2.3.1</restlet.version>
+		<poi.version>3.7-beta1</poi.version>
+		<struts.slf4j.version>1.7.5</struts.slf4j.version>
+	</properties>
+	
+	<dependencies>
+	<!-- Logging Begin -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${struts.slf4j.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${struts.slf4j.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${struts.slf4j.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+			<scope>compile</scope>
+		</dependency>
+		<!-- Logging End -->
+		<!-- Common Libraries Begin -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.4</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20080701</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<!-- JAVA EE 5.0 Begin -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+			<scope>runtime</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring.security.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.security.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${spring.security.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+		  <groupId>com.trs.om</groupId>
+		  <artifactId>om-commons</artifactId>
+		  <version>1.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+		  <groupId>com.trs.om</groupId>
+		  <artifactId>om-resource</artifactId>
+		  <version>1.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+		  <groupId>com.trs</groupId>
+		  <artifactId>om-key</artifactId>
+		  <version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.trs</groupId>
+			<artifactId>ipprocess</artifactId>
+			<version>1.0.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+		  <groupId>com.trs</groupId>
+		  <artifactId>trscis</artifactId>
+		  <version>4.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.trs</groupId>
+			<artifactId>trsids-agent</artifactId>
+			<version>3.5.build3500</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.trs</groupId>
+			<artifactId>trsids-filter</artifactId>
+			<version>3.5.build3500</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+		  <groupId>com.trs</groupId>
+		  <artifactId>trsids-remote-api</artifactId>
+		  <version>3.5.Build3500</version>
+		</dependency>
+		<dependency>
+			<groupId>com.trs</groupId>
+			<artifactId>trsids-authorization</artifactId>
+			<version>1.0.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>jsr311-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+	</dependencies>
+</project>

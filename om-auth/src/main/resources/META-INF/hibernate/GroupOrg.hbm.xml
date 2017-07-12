@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.trs.om.api.ws.synuser.GroupOrg" table="grouporg">
+ <id name="id">
+   <generator class="native"/>
+  </id>
+  <property column="groupID" generated="never" lazy="false"
+   length="20" name="groupID" not-null="true" type="string" unique="true"/>
+  <property column="orgID" generated="never" lazy="false"
+   length="20" name="orgID" not-null="true" type="string" unique="true"/>
+ </class>
+
+</hibernate-mapping>

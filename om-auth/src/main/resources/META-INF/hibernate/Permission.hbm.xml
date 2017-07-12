@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class dynamic-insert="true" dynamic-update="true" name="com.trs.om.bean.Permission" table="`permission`">
+  <cache include="all" usage="read-write"/>
+  <id column="id" name="id">
+   <generator class="native"/>
+  </id>
+  <property column="`APPLICATION`" generated="never" lazy="false"
+   name="application" not-null="true" type="string"/>
+  <property column="`OBJECT`" generated="never" lazy="false"
+   name="object" not-null="true" type="string"/>
+  <property column="`OPERATION`" generated="never" lazy="false"
+   name="operation" not-null="true" type="string"/>
+     <property column="`MODULE`" generated="never" lazy="false"
+   name="module" not-null="true" type="string"/>
+  <joined-subclass name="com.trs.om.bean.DataPermission" table="datapermission">
+   <key column="id"/>
+   <property length="128" name="name" not-null="true" type="string" unique="true"/>
+   <property length="64" name="tableName" not-null="true" type="string"/>
+   <property name="searchExpression" not-null="true" type="text"/>
+   <property length="128" name="remark" type="string"/>
+  </joined-subclass>
+ </class>
+</hibernate-mapping>

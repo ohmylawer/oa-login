@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.trs.om.bean.LoginUser" table="loginuser">
+  <cache usage="read-write"/>
+  <id name="id">
+   <generator class="native"/>
+  </id>
+  <many-to-one class="com.trs.om.bean.User" lazy="false" name="user"
+   not-null="true" unique="true"/>
+  <property generated="never" lazy="false" length="40" name="ip" type="string"/>
+  <property generated="never" lazy="false" length="128"
+   name="ipLocation" type="string"/>
+  <property generated="never" lazy="false" name="loginTime"
+   not-null="true" type="timestamp"/>
+ </class>
+</hibernate-mapping>
